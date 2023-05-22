@@ -16,6 +16,7 @@ export default {
         logo: "url('./src/assets/logo.svg')",
         menu_open: "url('./src/assets/menu.svg')",
         menu_close: "url('./src/assets/menu_close.svg')",
+        search: "url('./src/assets/search.svg')",
       },
       backgroundSize: {
         6: "24px",
