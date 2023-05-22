@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import MenuButton from "./MenuButton";
 import Menu from "../Menu/Menu";
 import Search from "../Menu/Search";
+import { useSelector } from "react-redux";
 
 const style = {
   menuClosed:
@@ -11,7 +12,8 @@ const style = {
     "absolute left-0 top-14 h-full w-full bg-basecolor bg-opacity-20 p-2 lg:static lg:mt-6 lg:rounded-md lg:bg-black lg:bg-opacity-30 translate-x-0 lg:hidden transition-all duration-500",
 };
 
-const Nav = ({ menuToggle, menuState }) => {
+const Nav = () => {
+  const menuState = useSelector((state) => state.menu);
   return (
     <nav className="z-[1] flex h-14 w-screen items-center justify-between border-gray_border border-opacity-10 bg-basecolor bg-opacity-20 p-2 lg:h-screen lg:w-80 lg:flex-col lg:justify-start lg:border-r-[1px]">
       <Logo />
@@ -23,8 +25,8 @@ const Nav = ({ menuToggle, menuState }) => {
       </div>
 
       {/* //////////////////////////////////////// */}
-
-      <MenuButton menuToggle={menuToggle} />
+      {/* Phone only menu toggle */}
+      <MenuButton />
 
       {/* //////////////////////////////////////// */}
 
