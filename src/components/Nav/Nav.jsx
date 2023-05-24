@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./Logo";
 import MenuButton from "./MenuButton";
 import Menu from "../Menu/Menu";
 import Search from "../Menu/Search";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { menuToggle } from "../../features/menu/menuSlice";
 
 const style = {
   menuClosed:
@@ -14,6 +15,21 @@ const style = {
 
 const Nav = () => {
   const menuState = useSelector((state) => state.menu);
+  const dispatch = useDispatch();
+
+  function closeMenu() {
+    if (window.innerWidth >= 922 && menuState) {
+      dispatch(menuToggle());
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", closeMenu);
+    return () => {
+      window.removeEventListener("resize", closeMenu);
+    };
+  }, [window.innerWidth]);
+
   return (
     <nav className="z-[1] flex h-14 w-screen items-center justify-between border-gray_border border-opacity-10 bg-basecolor bg-opacity-20 p-2 lg:h-screen lg:w-80 lg:flex-col lg:justify-start lg:border-r-[1px]">
       <Logo />
