@@ -4,7 +4,7 @@ import FeedsAndCommunities from "./FeedsAndCommunities";
 
 const Menu = () => {
   return (
-    <div className="h-full">
+    <div className="h-full pb-2">
       {/* Search bar, small device visible, medium and large device hidden */}
       <div className="mb-2 h-10 md:hidden">
         <Search />

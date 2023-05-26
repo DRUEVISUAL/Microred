@@ -1,8 +1,13 @@
 import React from "react";
 
-const Community = () => {
+const style = {
+  menuElement: "relative rounded-sm hover:bg-black hover:bg-opacity-30",
+  notMenuElement: "relative rounded-sm",
+};
+
+const Community = ({ isMenuElement }) => {
   return (
-    <div className="relative rounded-sm hover:bg-black hover:bg-opacity-30 ">
+    <div className={isMenuElement ? style.menuElement : style.notMenuElement}>
       {/* Community image */}
       <div className=" absolute left-2 top-[50%] h-6 w-6 translate-y-[-50%] rounded-full bg-red"></div>
       {/* Community name */}

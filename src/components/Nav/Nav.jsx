@@ -8,14 +8,17 @@ import { menuToggle } from "../../features/menu/menuSlice";
 
 const style = {
   menuClosed:
-    "absolute left-0 top-14 h-full w-full bg-basecolor bg-opacity-20 p-2 lg:static lg:mt-6 lg:rounded-md lg:bg-black lg:bg-opacity-30 translate-x-full lg:hidden transition-all duration-500",
+    "fixed left-0 top-14 h-full w-full bg-[#1f1f1f] p-2 bg-opacity-[100%] lg:static lg:mt-6 lg:rounded-md lg:bg-black lg:bg-opacity-30 translate-x-full lg:hidden transition-all duration-500",
   menuOpen:
-    "absolute left-0 top-14 h-full w-full bg-basecolor bg-opacity-20 p-2 lg:static lg:mt-6 lg:rounded-md lg:bg-black lg:bg-opacity-30 translate-x-0 lg:hidden transition-all duration-500",
+    "fixed left-0 top-14 h-full w-full bg-[#1f1f1f] p-2 bg-opacity-[100%] lg:static lg:mt-6 lg:rounded-md lg:bg-black lg:bg-opacity-30 translate-x-0 lg:hidden transition-all duration-500 pb-4",
 };
 
 const Nav = () => {
   const menuState = useSelector((state) => state.menu);
   const dispatch = useDispatch();
+
+  //////////////////////////////////////////////////
+  // When conditions are met the menu closes
 
   function closeMenu() {
     if (window.innerWidth >= 922 && menuState) {
@@ -30,18 +33,20 @@ const Nav = () => {
     };
   }, [window.innerWidth]);
 
+  //////////////////////////////////////////////////
+
   return (
-    <nav className="z-[1] flex h-14 w-screen items-center justify-between border-gray_border border-opacity-10 bg-basecolor bg-opacity-20 p-2 lg:h-screen lg:w-80 lg:flex-col lg:justify-start lg:border-r-[1px]">
+    <nav className="fixed left-0 top-0 z-[100] flex h-14 w-screen items-center justify-between border-gray_border border-opacity-10 bg-[#1f1f1f] bg-opacity-[100%] p-2 lg:h-screen lg:w-80 lg:flex-col lg:justify-start lg:border-r-[1px] lg:bg-basecolor lg:bg-opacity-[24%]">
       <Logo />
 
       {/* //////////////////////////////////////// */}
-      {/* Search bar, small device hidden, medium and large device visible */}
+      {/* Search bar, small device hidden, medium and above visible */}
       <div className="hidden w-1/2 md:block md:h-10 lg:mt-6 lg:h-12 lg:w-full">
         <Search />
       </div>
 
       {/* //////////////////////////////////////// */}
-      {/* Phone only menu toggle */}
+      {/* Menu toggle button (Phone only) */}
       <MenuButton />
 
       {/* //////////////////////////////////////// */}

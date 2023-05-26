@@ -11,7 +11,7 @@ const Communities = () => {
       {/* Feed elements container */}
       <div className="flex flex-col gap-2">
         {/* Feed element */}
-        <Community />
+        <Community isMenuElement={true} />
       </div>
     </div>
   );

@@ -17,9 +17,19 @@ export default {
         menu_open: "url('./src/assets/menu.svg')",
         menu_close: "url('./src/assets/menu_close.svg')",
         search: "url('./src/assets/search.svg')",
+        vote: "url('./src/assets/vote.svg')",
+        vote_clicked: "url('./src/assets/vote_clicked.svg')",
+        comment: "url('./src/assets/comment.svg')",
+        comment_hover: "url('./src/assets/comment_hover.svg')",
       },
       backgroundSize: {
         6: "24px",
+      },
+      screens: {
+        xs: "320px",
+      },
+      borderWidth: {
+        1: "1px",
       },
     },
   },
