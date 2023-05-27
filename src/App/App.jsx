@@ -6,7 +6,9 @@ const App = () => {
   return (
     <div className="h-screen w-screen">
       <Nav />
-      <main className="absolute right-0 top-14 mx-auto h-[calc(100vh-56px)] w-screen pt-4 xs:px-2 sm:px-4 md:px-8 lg:top-0 lg:h-screen lg:w-[calc(100vw-320px)] lg:px-16 lg:pt-8">
+      <main className="absolute right-0 top-14 mx-auto w-full pt-2 xs:px-2 sm:px-4 md:px-8 md:pt-4 lg:top-0 lg:w-[calc(100vw-320px)] lg:px-16 lg:pt-8">
+        <Tile />
+        <Tile />
         <Tile />
       </main>
     </div>
