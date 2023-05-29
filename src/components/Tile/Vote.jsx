@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 const style = {
-  upvote:
+  upvoteNotClicked:
     "bg-50% h-full w-12 rotate-180 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%] animation",
   upvoteClicked:
     "bg-50% h-full w-12 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
-  downvote:
+  downvoteNotClicked:
     "bg-50% h-full w-12 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%]",
   downvoteClicked:
     "bg-50% h-full w-12 rotate-180 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
@@ -32,10 +32,10 @@ const Vote = () => {
   }
 
   return (
-    <div className="flex h-full items-center" data-testid='vote-comp'>
+    <div className="flex h-full items-center">
       <button
         value="upvote"
-        className={vote.upvote ? style.upvoteClicked : style.upvote}
+        className={vote.upvote ? style.upvoteClicked : style.upvoteNotClicked}
         onClick={handleClickVote}
       ></button>
       <div className=" w-12 border-x-1 border-gray_border border-opacity-[14%] p-2 text-center text-xs">
@@ -44,7 +44,8 @@ const Vote = () => {
       <button
         value="downvote"
         onClick={handleClickVote}
-        className={vote.downvote ? style.downvoteClicked : style.downvote}
+        className={vote.downvote ? style.downvoteClicked : style.downvoteNotClicked}
+        isActive={vote.downvote}
       ></button>
     </div>
   );

@@ -52,7 +52,7 @@ const Nav = () => {
       {/* //////////////////////////////////////// */}
 
       {/* Phone menu */}
-      <div className={menuState ? style.menuOpen : style.menuClosed}>
+      <div className={menuState ? style.menuOpen : style.menuClosed} data-cy="phoneMenuComponentContainer">
         <Menu />
       </div>
       {/* Desktop menu */}
