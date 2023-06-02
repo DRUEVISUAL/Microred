@@ -45,7 +45,6 @@ const Vote = () => {
         value="downvote"
         onClick={handleClickVote}
         className={vote.downvote ? style.downvoteClicked : style.downvoteNotClicked}
-        isActive={vote.downvote}
       ></button>
     </div>
   );

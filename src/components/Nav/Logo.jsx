@@ -1,4 +1,5 @@
 import React from "react";
+import { auth_URL } from "../../api/reddit";
 
 const Logo = () => {
   return (
@@ -8,9 +9,9 @@ const Logo = () => {
         alt="logo vector image"
         className="scale-75 duration-200 ease-out group-hover:animate-pulse lg:scale-100"
       />
-      <p className="-ml-1 text-2xl font-semibold text-red group-hover:animate-pulse lg:ml-0 lg:text-3xl">
+      <a href={auth_URL} className="-ml-1 text-2xl font-semibold text-red group-hover:animate-pulse lg:ml-0 lg:text-3xl">
         Microred
-      </p>
+      </a>
     </div>
   );
 };
