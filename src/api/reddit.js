@@ -1,7 +1,7 @@
 export const Reddit = {
-  async getBestPosts() {
-    const data = await fetch('https://www.reddit.com/r/all/best.json');
+  async fetchFeedPosts(feed) {
+    const data = await fetch(`https://www.reddit.com/r/all/${feed}.json`);
     const response = await data.json();
-    return response.data.children;
-  }
-}
+    return response;
+  },
+};

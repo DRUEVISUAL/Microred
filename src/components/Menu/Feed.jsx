@@ -10,8 +10,8 @@ const style = {
 
 const Feed = ({ name }) => {
   return (
-    <button
-      className={style.inactive}
+    <NavLink
+      className={({isActive}) => isActive ? style.active : style.inactive}
       to={`/${name.toLowerCase()}`}
     >
       <img
@@ -22,7 +22,7 @@ const Feed = ({ name }) => {
       <p className="rounded-md py-2 pl-2 text-lg font-medium text-text_color">
         {name}
       </p>
-    </button>
+    </NavLink>
   );
 };
 

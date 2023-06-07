@@ -30,6 +30,12 @@ export default {
       borderWidth: {
         1: "1px",
       },
+      animation: {
+        pulse_3000: "pulse 3000ms ease-in-out infinite",
+        pulse_4000: "pulse 4000ms ease-in-out infinite",
+        pulse_5000: "pulse 5000ms ease-in-out infinite",
+        pulse_6000: "pulse 6000ms ease-in-out infinite",
+      },
     },
   },
   plugins: [],

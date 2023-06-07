@@ -1,15 +1,27 @@
-import React from "react";
-import Nav from "../components/Nav/Nav";
+import React, { useEffect } from "react";
+import RootLayout from "../layout/RootLayout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
 import Tile from "../components/Tile/Tile";
+import { fetchTopPosts, getTopPosts } from "../features/feeds/topFeedSlice";
+import { useDispatch, useSelector } from "react-redux";
+import FeedPage from "../pages/feedPage";
 
 const App = () => {
+  
+  
   return (
-    <div className="h-screen w-screen">
-      <Nav />
-      <main className="absolute right-0 top-14 mx-auto w-full pt-2 xs:px-2 sm:px-4 md:px-8 md:pt-4 lg:top-0 lg:w-[calc(100vw-320px)] lg:px-16 lg:pt-8">
-        <Tile />
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RootLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/top" element={<FeedPage />} />
+          <Route path="/best" element={<Tile />} />
+          <Route path="/new" element={<Tile />} />
+          <Route path="/hot" element={<Tile />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
