@@ -12,7 +12,6 @@ export default {
         text_color: "#FCFCFC",
       },
       backgroundImage: {
-        home_feed: "url('./src/assets/house-fill.svg')",
         logo: "url('./src/assets/logo.svg')",
         menu_open: "url('./src/assets/menu.svg')",
         menu_close: "url('./src/assets/menu_close.svg')",

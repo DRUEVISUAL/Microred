@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const feedsSlice = createSlice({
   name: "feeds",
-  initialState: ["Best", "Hot", "New", "Top"],
+  initialState: ["Top", "Best", "New", "Hot"],
 });
 
 export default feedsSlice.reducer;
