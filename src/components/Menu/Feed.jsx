@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const style = {
@@ -9,20 +10,24 @@ const style = {
 };
 
 const Feed = ({ name }) => {
+  const dispatch = useDispatch();
   return (
-    <NavLink
-      className={({isActive}) => isActive ? style.active : style.inactive}
-      to={`/${name.toLowerCase()}`}
-    >
-      <img
-        src={`src/assets/${name}_feed.svg`}
-        alt={name}
-        className="h-full w-6 pl-2"
-      />
-      <p className="rounded-md py-2 pl-2 text-lg font-medium text-text_color">
-        {name}
-      </p>
-    </NavLink>
+    <>
+      <NavLink
+        className={({ isActive }) => (isActive ? style.active : style.inactive)}
+        to={`${name.toLowerCase()}`}
+        onClick={() => dispatch(menuToggle())}
+      >
+        <img
+          src={`src/assets/${name}_feed.svg`}
+          alt={name}
+          className="h-full w-6 pl-2"
+        />
+        <p className="rounded-md py-2 pl-2 text-lg font-medium text-text_color">
+          {name}
+        </p>
+      </NavLink>
+    </>
   );
 };
 

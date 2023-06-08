@@ -1,8 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div className="group z-[2] flex cursor-pointer items-center justify-center rounded-md transition-all ease-in-out lg:mt-4 lg:p-4 lg:px-8 lg:hover:bg-black lg:hover:bg-opacity-30">
+    <NavLink className="group z-[2] flex cursor-pointer items-center justify-center rounded-md transition-all ease-in-out lg:mt-4 lg:p-4 lg:px-8 lg:hover:bg-black lg:hover:bg-opacity-30" to="/">
       <img
         src="./src/assets/logo.svg"
         alt="logo vector image"
@@ -11,7 +12,7 @@ const Logo = () => {
       <button className="-ml-1 text-2xl font-semibold text-red group-hover:animate-pulse lg:ml-0 lg:text-3xl">
         Microred
       </button>
-    </div>
+    </NavLink>
   );
 };
 

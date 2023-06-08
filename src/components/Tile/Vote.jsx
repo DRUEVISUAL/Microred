@@ -12,11 +12,13 @@ const style = {
 };
 
 const Vote = ({ score }) => {
+  // State for the vote field
   const [vote, setVote] = useState({
     upvote: false,
     downvote: false,
   });
 
+  // State for the score calculated by the votes (used to rerender the pages if the user votes)
   const [scoreCount, setScoreCount] = useState(score);
 
   function handleClickVote(e) {
@@ -45,7 +47,7 @@ const Vote = ({ score }) => {
         onClick={handleClickVote}
         aria-label="upvote button"
       ></button>
-      <div className="w-max border-x-1 border-gray_border border-opacity-[14%] p-2 text-center text-xs">
+      <div className="min-w-12 w-max border-x-1 border-gray_border border-opacity-[14%] p-2 text-center text-xs">
         {scoreCount}
       </div>
       <button

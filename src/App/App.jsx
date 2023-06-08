@@ -1,28 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import RootLayout from "../layout/RootLayout";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  Route,
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+} from "react-router-dom";
 import Home from "../pages/Home";
-import Tile from "../components/Tile/Tile";
-import { fetchTopPosts, getTopPosts } from "../features/feeds/topFeedSlice";
-import { useDispatch, useSelector } from "react-redux";
 import FeedPage from "../pages/feedPage";
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="top" element={<FeedPage />} />
+      <Route path="best" element={<FeedPage />} />
+      <Route path="new" element={<FeedPage />} />
+      <Route path="hot" element={<FeedPage />} />
+    </Route>
+  )
+);
+
 const App = () => {
-  
-  
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/top" element={<FeedPage />} />
-          <Route path="/best" element={<Tile />} />
-          <Route path="/new" element={<Tile />} />
-          <Route path="/hot" element={<Tile />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

@@ -1,18 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Top from "./Top";
 import Content from "./Content";
 import Bottom from "./Bottom";
 
 const Tile = ({ post }) => {
-  const fetchIcon = async () => {
-    const data = await fetch(
-      `https://www.reddit.com/${post.subreddit_name_prefixed}/about.json`
-    );
-    const response = await data.json();
-    const json = await response.data;
-    const icon = await json.community_icon.match(/.+?(?=\?)/);
-  };
+  // Local state for icons to be saved after fetching
+  const [icon, setIcon] = useState();
 
+  // Fetching icons on page load, one by one based on the subreddit name
+  useEffect(() => {
+    const fetchIcon = async () => {
+      try {
+        const data = await fetch(
+          `https://www.reddit.com/${post.subreddit_name_prefixed}/about.json`
+        );
+        const response = await data.json();
+        const json = await response.data;
+        const extractIcon = await json.community_icon.match(/.+?(?=\?)/);
+        if (extractIcon) {
+          setIcon(extractIcon);
+        } else {
+          setIcon(json.icon_img);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchIcon();
+  }, []);
+
+  window.icon = icon;
   return (
     <article
       className="h-max-content mx-auto mb-12 flex max-h-[90vh] min-h-[480px] w-full min-w-[320px] max-w-[700px] flex-col items-center justify-between rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-20 p-2 xs:aspect-[1/1.5] lg:mb-16"
@@ -21,8 +39,9 @@ const Tile = ({ post }) => {
       <Top
         title={post.title}
         subreddit={post.subreddit_name_prefixed}
-        created={post.created_utc}
+        created={post.created}
         author={post.author}
+        icon={icon}
       />
       <Content
         height={post.isVideo ? post.media.reddit_video.height : null}
@@ -31,7 +50,7 @@ const Tile = ({ post }) => {
         video={post.isVideo ? post.media.reddit_video.scrubber_media_url : null}
         image={!post.isVideo ? post.url : null}
       />
-      <Bottom score={post.score} />
+      <Bottom score={post.score} comments={post.num_comments}/>
     </article>
   );
 };

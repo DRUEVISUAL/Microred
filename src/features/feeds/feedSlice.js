@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Reddit } from "../../api/reddit";
 
-export const fetchTopPosts = createAsyncThunk(
-  "topFeed/fetchTopPosts",
+export const fetchPosts = createAsyncThunk(
+  "feedSlice/fetchPosts",
   async (feed, thunkAPI) => {
-    const response = await Reddit.fetchFeedPosts("top");
+    const response = await Reddit.fetchFeedPosts(feed);
     return response.data;
   }
 );
 
-const topFeedSlice = createSlice({
-  name: "topFeed",
+const feedSlice = createSlice({
+  name: "feedSlice",
   initialState: {
-    topPosts: [],
+    posts: [],
     after: null,
     before: null,
     isLoading: false,
@@ -25,26 +25,24 @@ const topFeedSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTopPosts.pending, (state, action) => {
+      .addCase(fetchPosts.pending, (state, action) => {
         state.isLoading = true;
         state.error = false;
       })
-      .addCase(fetchTopPosts.fulfilled, (state, action) => {
-        state.topPosts = action.payload.children;
+      .addCase(fetchPosts.fulfilled, (state, action) => {
+        state.posts = action.payload.children;
         state.after = action.payload.after;
         state.before = action.payload.before;
         state.isLoading = false;
         state.error = false;
       })
-      .addCase(fetchTopPosts.rejected, (state, action) => {
+      .addCase(fetchPosts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = true;
       });
   },
 });
 
-export const getTopPosts = (state) => state.topPosts;
+export const { addTopPosts } = feedSlice.actions;
 
-export const { addTopPosts } = topFeedSlice.actions;
-
-export default topFeedSlice.reducer;
+export default feedSlice.reducer;
