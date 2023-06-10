@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const style = {
-  menuElement: "relative rounded-sm hover:bg-black hover:bg-opacity-30 z-20",
-  notMenuElement: "relative rounded-sm",
+  menuElement:
+    "hover:bg-black hover:bg-opacity-30 z-20 w-full flex items-center justify-start",
+  notMenuElement:
+    "hover:underline text-text_color z-20 w-full flex items-center justify-start",
 };
 
 const Community = ({ isMenuElement, subreddit, icon }) => {
@@ -16,12 +18,9 @@ const Community = ({ isMenuElement, subreddit, icon }) => {
       to={`https://www.reddit.com/${subreddit}`}
     >
       {/* Community image */}
-      <img
-        src={icon}
-        className=" absolute left-2 top-[50%] h-6 w-6 object-contain translate-y-[-50%] rounded-full"
-      />
+      <img src={icon} className="h-6 w-6 ml-2 rounded-full object-contain" />
       {/* Community name */}
-      <p className="rounded-md px-10 py-2 text-text_color">{subreddit}</p>
+      <p className="rounded-md p-2 text-text_color">{subreddit}</p>
     </Link>
   );
 };

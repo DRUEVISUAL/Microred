@@ -44,10 +44,11 @@ const Tile = ({ post }) => {
         icon={icon}
       />
       <Content
-        height={post.isVideo ? post.media.reddit_video.height : null}
-        width={post.isVideo ? post.media.reddit_video.width : null}
+        videoHeight={post.isVideo ? post.media.reddit_video.height : null}
+        videoWidth={post.isVideo ? post.media.reddit_video.width : null}
         isVideo={post.isVideo}
         video={post.isVideo ? post.media.reddit_video.scrubber_media_url : null}
+        
         image={!post.isVideo ? post.url : null}
       />
       <Bottom score={post.score} comments={post.num_comments} />

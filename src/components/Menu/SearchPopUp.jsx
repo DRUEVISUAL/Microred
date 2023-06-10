@@ -11,7 +11,7 @@ const SearchPopUp = () => {
     return url.match(/.+?(?=\?)/);
   }
   return (
-    <aside className="h-full w-full overflow-y-scroll rounded-md bg-basecolor bg-opacity-20 py-2 shadow-md">
+    <aside className="h-full w-full overflow-y-scroll rounded-md bg-basecolor bg-opacity-20 shadow-md">
       {searchResults?.map((result) => {
         return (
           <Community

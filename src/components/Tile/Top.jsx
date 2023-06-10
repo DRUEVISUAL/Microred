@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Community from "../Menu/Community";
+import { Link } from "react-router-dom";
 
 const Top = ({ title, author, subreddit, created, icon }) => {
   const [time, setTime] = useState({
@@ -43,7 +44,15 @@ const Top = ({ title, author, subreddit, created, icon }) => {
       <div className="flex items-center justify-between py-1 text-[10px] lg:text-xs">
         <Community isMenuElement={false} subreddit={subreddit} icon={icon} />
         <div className="flex items-center gap-2 pr-2 text-text_color opacity-60">
-          <p>Posted by: {author}</p>
+          <p>
+            Posted by:{" "}
+            <Link
+              className="hover:underline"
+              to={`https://www.reddit.com/user/${author}`}
+            >
+              {author}
+            </Link>
+          </p>
           <p>
             {time.yrs
               ? `${time.yrs} years ago`
