@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const style = {
@@ -10,13 +9,11 @@ const style = {
 };
 
 const Feed = ({ name }) => {
-  const dispatch = useDispatch();
   return (
     <>
       <NavLink
         className={({ isActive }) => (isActive ? style.active : style.inactive)}
         to={`${name.toLowerCase()}`}
-        onClick={() => dispatch(menuToggle())}
       >
         <img
           src={`src/assets/${name}_feed.svg`}

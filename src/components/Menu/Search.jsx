@@ -1,13 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSearch, removeResults } from "../../features/search/searchSlice";
+
+const style = {
+  removeTrue:
+    "absolute right-2 top-0 h-full w-4 bg-menu_close bg-[60%] bg-no-repeat opacity-80 transition-all duration-600",
+  removeFalse:
+    "absolute -right-2 top-0 h-full w-4 bg-menu_close bg-[60%] bg-no-repeat opacity-0 transition-all duration-600",
+};
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const searchResults = useSelector((state) => state.search.results);
+  const [searchField, setSearchField] = useState("");
+
+  // Saving the input value to update the UI, this will be dispatched to the fetchSearch thunk
+  function handleInputSearch(e) {
+    setSearchField(e.target.value);
+  }
+
+  // Dispatching the value and fetching the data based on the input value
+  useEffect(() => {
+    dispatch(fetchSearch(searchField));
+  }, [searchField]);
+
   return (
-    <input
-      type="text"
-      className="h-full w-full rounded-md bg-gray_border bg-opacity-[14%] bg-search bg-[.5rem] bg-no-repeat pl-8 text-text_color placeholder-text_color placeholder-opacity-40 shadow-md ring-1 ring-gray_border ring-opacity-25"
-      placeholder="Search"
-      data-cy="menuSearchComponent"
-    />
+    <div className="relative" aria-label="searchField">
+      <input
+        type="text"
+        name="search"
+        value={searchField}
+        onChange={handleInputSearch}
+        className="h-9 w-full rounded-md bg-gray_border bg-opacity-[14%] bg-search bg-[.5rem] bg-no-repeat pl-8 text-text_color placeholder-text_color placeholder-opacity-40 shadow-md ring-1 ring-gray_border ring-opacity-25"
+        placeholder="Search"
+        data-cy="menuSearchComponent"
+      />
+      <button
+        className={
+          searchResults.length === 0 ? style.removeFalse : style.removeTrue
+        }
+        onClick={() => (dispatch(removeResults()), setSearchField(""))}
+      ></button>
+    </div>
   );
 };
 

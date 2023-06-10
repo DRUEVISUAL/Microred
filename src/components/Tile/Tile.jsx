@@ -7,7 +7,7 @@ const Tile = ({ post }) => {
   // Local state for icons to be saved after fetching
   const [icon, setIcon] = useState();
 
-  // Fetching icons on page load, one by one based on the subreddit name
+  // Fetching subreddit icon
   useEffect(() => {
     const fetchIcon = async () => {
       try {
@@ -17,6 +17,7 @@ const Tile = ({ post }) => {
         const response = await data.json();
         const json = await response.data;
         const extractIcon = await json.community_icon.match(/.+?(?=\?)/);
+
         if (extractIcon) {
           setIcon(extractIcon);
         } else {
@@ -29,11 +30,10 @@ const Tile = ({ post }) => {
 
     fetchIcon();
   }, []);
-
-  window.icon = icon;
+  //
   return (
     <article
-      className="h-max-content mx-auto mb-12 flex max-h-[90vh] min-h-[480px] w-full min-w-[320px] max-w-[700px] flex-col items-center justify-between rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-20 p-2 xs:aspect-[1/1.5] lg:mb-16"
+      className="h-max-content mx-auto mb-12 flex max-h-[90vh] min-h-[480px] w-full min-w-[320px] max-w-[700px] flex-col items-center justify-between rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-20 p-2 backdrop-blur-xl backdrop-brightness-50 xs:aspect-[1/1.5] lg:mb-16"
       data-cy="tile"
     >
       <Top
@@ -50,7 +50,7 @@ const Tile = ({ post }) => {
         video={post.isVideo ? post.media.reddit_video.scrubber_media_url : null}
         image={!post.isVideo ? post.url : null}
       />
-      <Bottom score={post.score} comments={post.num_comments}/>
+      <Bottom score={post.score} comments={post.num_comments} />
     </article>
   );
 };

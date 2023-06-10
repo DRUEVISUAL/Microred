@@ -3,6 +3,7 @@ import { fetchPosts } from "../features/feeds/feedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Tile from "../components/Tile/Tile";
 import TileSkeleton from "../components/Tile/TileSkeleton";
+import BackgroundRedBlur from "../components/BackgroundRedBlur";
 
 const FeedPage = () => {
   // declaring variable to hold the dispatch function
@@ -18,7 +19,7 @@ const FeedPage = () => {
   // Dispatching fetchPosts thunk to fetch the reddit feed based on the page location
   useEffect(() => {
     dispatch(fetchPosts(window.location.pathname.slice(1)));
-  }, []);
+  }, [window.location.pathname]);
 
   // Retrurning the tiles from the store after successful fetch
   function returnTiles() {
@@ -26,10 +27,14 @@ const FeedPage = () => {
       return <Tile key={index} post={post.data} />;
     });
   }
+
   //
   return (
     <main className="absolute right-0 top-14 mx-auto w-full pt-2 xs:px-2 sm:px-4 md:px-8 md:pt-4 lg:top-0 lg:w-[calc(100vw-320px)] lg:px-16 lg:pt-8">
       {isLoading ? <TileSkeleton /> : returnTiles()}
+      <div className="fixed top-0 -z-10 h-screen w-screen brightness-[70%]">
+        <BackgroundRedBlur />
+      </div>
     </main>
   );
 };
