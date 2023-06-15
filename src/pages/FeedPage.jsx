@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Tile from "../components/Tile/Tile";
 import TileSkeleton from "../components/Tile/TileSkeleton";
 import BackgroundRedBlur from "../components/BackgroundRedBlur";
+import Comments from "../components/Tile/Comments";
 
 const FeedPage = () => {
   // declaring variable to hold the dispatch function

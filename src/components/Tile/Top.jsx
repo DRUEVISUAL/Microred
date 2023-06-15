@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Community from "../Menu/Community";
 import { Link } from "react-router-dom";
 
-const Top = ({ title, author, subreddit, created, icon }) => {
+const Top = ({ title, author, subreddit, created, icon, permalink }) => {
   const [time, setTime] = useState({
     sec: null,
     min: null,
@@ -70,9 +70,11 @@ const Top = ({ title, author, subreddit, created, icon }) => {
       </div>
 
       {/* Title */}
-      <h2 className="w-full rounded-b-md bg-gray_element_background bg-opacity-[15%] p-2 text-sm font-medium tracking-wide text-text_color lg:text-base">
-        {title}
-      </h2>
+      <Link to={`https://www.reddit.com${permalink}`}>
+        <h2 className="w-full rounded-b-md bg-gray_element_background bg-opacity-[15%] p-2 text-sm font-medium tracking-wide text-text_color hover:underline lg:text-base">
+          {title}
+        </h2>
+      </Link>
     </div>
   );
 };

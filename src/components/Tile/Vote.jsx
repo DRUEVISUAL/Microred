@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 const style = {
   upvoteNotClicked:
-    "bg-50% h-full w-12 rotate-180 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%] animation",
+    "bg-50% h-8 w-12 rotate-180 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%]",
   upvoteClicked:
-    "bg-50% h-full w-12 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
+    "bg-50% h-8 w-12 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
   downvoteNotClicked:
-    "bg-50% h-full w-12 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%]",
+    "bg-50% h-8 w-12 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%]",
   downvoteClicked:
-    "bg-50% h-full w-12 rotate-180 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
+    "bg-50% h-8 w-12 rotate-180 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
 };
 
 const Vote = ({ score }) => {
@@ -40,7 +40,7 @@ const Vote = ({ score }) => {
   }
 
   return (
-    <div className="flex h-full items-center">
+    <div className="flex h-full items-center justify-center font-mono">
       <button
         value="upvote"
         className={vote.upvote ? style.upvoteClicked : style.upvoteNotClicked}
