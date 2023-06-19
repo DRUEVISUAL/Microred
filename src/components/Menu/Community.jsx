@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { menuToggle } from "../../features/menu/menuSlice";
 
 const style = {
   menuElement:
@@ -14,13 +15,17 @@ const Community = ({ isMenuElement, subreddit, icon }) => {
   return (
     <Link
       className={isMenuElement ? style.menuElement : style.notMenuElement}
-      onClick={() => dispatch(menuToggle())}
-      to={`https://www.reddit.com/${subreddit}`}
+      to={`/${subreddit}`}
     >
       {/* Community image */}
-      <img src={icon} className="h-6 w-6 ml-2 rounded-full object-contain" />
+      <img src={icon} className="ml-2 h-6 w-6 rounded-full object-contain" />
       {/* Community name */}
-      <p className="rounded-md p-2 text-text_color">{subreddit}</p>
+      <p
+        className="rounded-md p-2 text-text_color"
+        onClick={() => dispatch(menuToggle())}
+      >
+        {subreddit}
+      </p>
     </Link>
   );
 };

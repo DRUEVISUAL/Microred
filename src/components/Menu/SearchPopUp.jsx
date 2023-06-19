@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Community from "./Community";
 import { nanoid } from "@reduxjs/toolkit";
-import noSubredditIcon from "../../assets/missing_subreddit_icon.svg";
+import noSubredditIcon from "/assets/missing_subreddit_icon.svg";
 const SearchPopUp = () => {
   const searchResults = useSelector((state) => state.search.results);
 

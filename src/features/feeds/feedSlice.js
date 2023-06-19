@@ -1,11 +1,36 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Reddit } from "../../api/reddit";
 
 export const fetchPosts = createAsyncThunk(
   "feedSlice/fetchPosts",
   async (feed, thunkAPI) => {
-    const response = await Reddit.fetchFeedPosts(feed);
-    return response.data;
+    if (feed === "top" || feed === "best" || feed === "new" || feed === "hot") {
+      const data = await fetch(`https://www.reddit.com/r/all/${feed}.json`);
+      const response = await data.json();
+      return response.data;
+    } else if (feed.includes("r/")) {
+      const data = await fetch(`https://www.reddit.com/${feed}.json`);
+      const response = await data.json();
+      return response.data;
+    }
+  }
+);
+
+export const fetchPostsBeforeAfter = createAsyncThunk(
+  "feedSlice/fetchPostsBeforeAfter",
+  async ({ feed, before, after }, thunkAPI) => {
+    if (before) {
+      const data = await fetch(
+        `https://www.reddit.com/r/all/${feed}.json?before=${before}`
+      );
+      const response = await data.json();
+      return response.data;
+    } else if (after) {
+      const data = await fetch(
+        `https://www.reddit.com/r/all/${feed}.json?after=${after}`
+      );
+      const response = await data.json();
+      return response.data;
+    }
   }
 );
 

@@ -16,7 +16,7 @@ const Feed = ({ name }) => {
         to={`${name.toLowerCase()}`}
       >
         <img
-          src={`src/assets/${name}_feed.svg`}
+          src={`/assets/${name}_feed.svg`}
           alt={name}
           className="h-full w-6 pl-2"
         />

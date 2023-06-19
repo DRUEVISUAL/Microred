@@ -2,7 +2,7 @@ import React from "react";
 
 const BackgroundRedBlur = () => {
   return (
-    <div className="fixed left-0 -z-10 grid h-screen w-screen place-content-center text-text_color">
+    <div className="fixed right-0 -z-10 grid h-full w-full lg:w-[calc(100vw-320px)] place-content-center text-text_color">
       <div className="absolute bottom-24 h-24 w-80 animate-pulse_4000 bg-red blur-[170px] lg:w-96"></div>
       <div className="absolute right-0 top-24 h-24 w-80 animate-pulse_5000 bg-red blur-[170px] lg:w-96"></div>
       <div className="absolute h-24 animate-pulse bg-red blur-[170px] lg:w-96"></div>
