@@ -1,7 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { menuToggle } from "../../features/menu/menuSlice";
+
+////////////////////////////////////////////////////////////////////////////////
 
 const style = {
   menuElement:
@@ -10,22 +10,31 @@ const style = {
     "hover:underline text-text_color z-20 w-full flex items-center justify-start",
 };
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Community = ({ isMenuElement, subreddit, icon }) => {
-  const dispatch = useDispatch();
+
+  // Srolling smoothly to the top of the page onClick
+  function startOnTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////
+
   return (
-    <Link
-      className={isMenuElement ? style.menuElement : style.notMenuElement}
-      to={`/${subreddit}`}
-    >
-      {/* Community image */}
-      <img src={icon} className="ml-2 h-6 w-6 rounded-full object-contain" />
-      {/* Community name */}
-      <p
-        className="rounded-md p-2 text-text_color"
-        onClick={() => dispatch(menuToggle())}
+    <Link to={`/${subreddit}`}>
+      <div
+        className={isMenuElement ? style.menuElement : style.notMenuElement}
+        onClick={() => startOnTop()}
       >
-        {subreddit}
-      </p>
+        {/* Community image */}
+        <img
+          src={icon}
+          className="ml-2 aspect-square h-6 rounded-full object-contain"
+        />
+        {/* Community name */}
+        <p className="rounded-md p-2 text-text_color">{subreddit}</p>
+      </div>
     </Link>
   );
 };

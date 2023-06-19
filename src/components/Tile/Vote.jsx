@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const style = {
   upvoteNotClicked:
     "bg-50% h-8 w-12 rotate-180 rounded-r-md bg-vote bg-center bg-no-repeat p-2 hover:bg-black hover:bg-opacity-[14%]",
@@ -11,6 +13,8 @@ const style = {
     "bg-50% h-8 w-12 rotate-180 rounded-l-md bg-vote_clicked bg-center bg-no-repeat p-2 bg-black bg-opacity-[14%]",
 };
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Vote = ({ score }) => {
   // State for the vote field
   const [vote, setVote] = useState({
@@ -20,6 +24,8 @@ const Vote = ({ score }) => {
 
   // State for the score calculated by the votes (used to rerender the pages if the user votes)
   const [scoreCount, setScoreCount] = useState(score);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   function handleClickVote(e) {
     if (e.target.value === "upvote" && vote.upvote === false) {
@@ -38,6 +44,8 @@ const Vote = ({ score }) => {
       return;
     }
   }
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="flex h-full items-center justify-center font-mono">

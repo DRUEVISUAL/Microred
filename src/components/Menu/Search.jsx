@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSearch, removeResults } from "../../features/search/searchSlice";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const style = {
   removeTrue:
     "absolute right-2 top-0 h-full w-4 bg-menu_close bg-[60%] bg-no-repeat opacity-80 transition-all duration-600",
@@ -9,10 +11,18 @@ const style = {
     "absolute -right-2 top-0 h-full w-4 bg-menu_close bg-[60%] bg-no-repeat opacity-0 transition-all duration-600",
 };
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Search = () => {
   const dispatch = useDispatch();
+
+  // Getting search results from the redux store
   const searchResults = useSelector((state) => state.search.results);
+
+  // State for searchfield value
   const [searchField, setSearchField] = useState("");
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   // Saving the input value to update the UI, this will be dispatched to the fetchSearch thunk
   function handleInputSearch(e) {
@@ -23,6 +33,8 @@ const Search = () => {
   useEffect(() => {
     dispatch(fetchSearch(searchField));
   }, [searchField]);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div
@@ -38,6 +50,7 @@ const Search = () => {
         placeholder="Search"
         data-cy="menuSearchComponent"
       />
+      {/* Clear search field */}
       <button
         className={
           searchResults.length === 0 ? style.removeFalse : style.removeTrue

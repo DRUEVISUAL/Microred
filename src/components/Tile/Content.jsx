@@ -3,6 +3,8 @@ import { decode } from "html-entities";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Content = ({ image, video, text, author }) => {
   const [textContent, setTextContent] = useState("");
   const [icon, setIcon] = useState("");
@@ -22,6 +24,8 @@ const Content = ({ image, video, text, author }) => {
       <source src={video} />
     </video>
   );
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   // Parsing rich text for post
   function parsedTextElement() {
@@ -67,6 +71,8 @@ const Content = ({ image, video, text, author }) => {
 
     fetchUserIcon();
   }, []);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="my-2 h-max w-full overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-[15%] p-2 text-text_color text-opacity-90 shadow-md">

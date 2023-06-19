@@ -9,6 +9,8 @@ import {
 import Home from "../pages/Home";
 import FeedPage from "../pages/FeedPage";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
     </Route>
   )
 );
+
+////////////////////////////////////////////////////////////////////////////////
 
 const App = () => {
   return <RouterProvider router={router} />;

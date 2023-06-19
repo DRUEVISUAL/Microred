@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Community from "../Menu/Community";
 import { Link } from "react-router-dom";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Top = ({ title, author, subreddit, created, icon, permalink }) => {
   const [time, setTime] = useState({
     sec: null,
@@ -10,6 +12,9 @@ const Top = ({ title, author, subreddit, created, icon, permalink }) => {
     dys: null,
     yrs: null,
   });
+
+  ////////////////////////////////////////////////////////////////////////////////
+
   useEffect(() => {
     // Epoch time of the post in seconds (initially milliseconds)
     let postEpoch = created * 1000;
@@ -35,6 +40,8 @@ const Top = ({ title, author, subreddit, created, icon, permalink }) => {
       ["yrs"]: years,
     });
   }, []);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="w-full rounded-[7px] border-1 border-gray_border border-opacity-[14%] shadow-md">

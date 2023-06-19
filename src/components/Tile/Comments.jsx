@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Content from "./Content";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Comments = ({ subreddit, id }) => {
   const [comments, setComments] = useState(null);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     async function fetchComments() {
@@ -14,6 +18,8 @@ const Comments = ({ subreddit, id }) => {
     }
     fetchComments();
   }, []);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="my-2 h-screen w-full overflow-hidden overflow-y-scroll rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-20 p-2 text-text_color shadow-md">

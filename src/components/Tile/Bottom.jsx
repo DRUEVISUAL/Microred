@@ -1,6 +1,8 @@
 import React from "react";
 import Vote from "./Vote";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const Bottom = ({ score, comments, toggleShowComments }) => {
 
   return (

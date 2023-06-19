@@ -5,12 +5,18 @@ import { menuToggle } from "../../features/menu/menuSlice";
 
 const Feeds = () => {
   const dispatch = useDispatch();
+
   const feeds = useSelector((store) => store.feeds);
+
+  ////////////////////////////////////////////////////////////////////////////////
 
   // Scroll to the top of the page if new feed is selected
   function startOnTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  ////////////////////////////////////////////////////////////////////////////////
+
   return (
     <div>
       {/* Feed title */}

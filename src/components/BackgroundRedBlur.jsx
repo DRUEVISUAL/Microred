@@ -1,5 +1,7 @@
 import React from "react";
 
+////////////////////////////////////////////////////////////////////////////////
+
 const BackgroundRedBlur = () => {
   return (
     <div className="fixed right-0 -z-10 grid h-full w-full lg:w-[calc(100vw-320px)] place-content-center text-text_color">

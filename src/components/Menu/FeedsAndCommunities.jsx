@@ -1,6 +1,7 @@
 import React from "react";
 import Feeds from "./Feeds";
-import Communities from "./Communities";
+
+////////////////////////////////////////////////////////////////////////////////
 
 const FeedAndCommunities = () => {
   return (
