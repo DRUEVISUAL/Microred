@@ -32,6 +32,7 @@ const Comments = ({ subreddit, id }) => {
             <Content
               text={comment.data.body_html}
               author={comment.data.author}
+              commentId={comment.data.id}
             />
           </div>
         );

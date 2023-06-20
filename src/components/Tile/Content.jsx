@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 ////////////////////////////////////////////////////////////////////////////////
 
-const Content = ({ image, video, text, author }) => {
+const Content = ({ image, video, text, author, thumbnail, domain, thumbnailHeight, commentId }) => {
   const [textContent, setTextContent] = useState("");
   const [icon, setIcon] = useState("");
 
@@ -14,7 +14,7 @@ const Content = ({ image, video, text, author }) => {
     <img
       src={image}
       alt=""
-      className="mx-auto max-h-[32rem] rounded-md object-contain"
+      className="mx-auto h-max max-h-[31rem] rounded-md object-contain"
     />
   );
 
@@ -25,7 +25,35 @@ const Content = ({ image, video, text, author }) => {
     </video>
   );
 
+  const hypertextElement = (
+    <div className="flex items-center justify-start gap-4">
+      <img
+        src={thumbnail}
+        alt=""
+        style={{ height: `${thumbnailHeight}px` }}
+        className="rounded-md"
+      />
+      <a href={image} className="h-8 w-8 text-xl font-medium hover:underline">
+        {domain}
+      </a>
+    </div>
+  );
+
   ////////////////////////////////////////////////////////////////////////////////
+
+  function postLogic() {
+    return text
+      ? textContent
+      : video
+      ? videoElement
+      : image.match("i.redd.it")
+      ? imageElement
+      : hypertextElement;
+  }
+
+  function commentLogic() {
+    return text ? textContent : video ? videoElement : imageElement;
+  }
 
   // Parsing rich text for post
   function parsedTextElement() {
@@ -40,14 +68,24 @@ const Content = ({ image, video, text, author }) => {
           {parse(decode(text).slice(0, 600).concat("..."))}
           <button
             className="w-full text-right font-bold hover:underline"
-            onClick={() => setTextContent(parse(decode(text)))}
+            onClick={() =>
+              setTextContent(
+                <>
+                  {parse(decode(text))} {imageElement}
+                </>
+              )
+            }
           >
             Read more
           </button>
         </>
       );
     } else {
-      setTextContent(parse(decode(text)));
+      setTextContent(
+        <>
+          {parse(decode(text))} {imageElement}
+        </>
+      );
     }
   }
 
@@ -76,7 +114,7 @@ const Content = ({ image, video, text, author }) => {
 
   return (
     <div className="my-2 h-max w-full overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-[15%] p-2 text-text_color text-opacity-90 shadow-md">
-      {author ? (
+      {commentId ? (
         <Link to={`https://www.reddit.com/user/${author}`}>
           <div className="flex h-max w-full items-center justify-start gap-2 text-center">
             <img
@@ -88,7 +126,7 @@ const Content = ({ image, video, text, author }) => {
           </div>
         </Link>
       ) : null}
-      {text ? textContent : video ? videoElement : imageElement}
+      {commentId ? commentLogic() : postLogic()}
     </div>
   );
 };

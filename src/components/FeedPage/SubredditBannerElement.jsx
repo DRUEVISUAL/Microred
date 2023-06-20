@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHref } from "react-router-dom";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -44,7 +45,7 @@ const SubredditBannerElement = ({ subreddit }) => {
       }
     };
     fetchIcon();
-  }, []);
+  }, [useHref()]);
 
   ////////////////////////////////////////////////////////////////////////////////
 

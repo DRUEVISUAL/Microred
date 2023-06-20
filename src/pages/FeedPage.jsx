@@ -6,6 +6,7 @@ import TileSkeleton from "../components/Tile/TileSkeleton";
 import BackgroundRedBlur from "../components/BackgroundRedBlur";
 import SubredditBannerElement from "../components/FeedPage/SubredditBannerElement";
 import FlipPage from "../components/FeedPage/FlipPage";
+import { useHref } from "react-router-dom";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -34,7 +35,7 @@ const FeedPage = () => {
   // Dispatching fetchPosts thunk to fetch the reddit feed based on the page location
   useEffect(() => {
     dispatch(fetchPosts(subreddit));
-  }, [window.location.pathname]);
+  }, [useHref()]);
 
   ////////////////////////////////////////////////////////////////////////////////
 

@@ -71,12 +71,16 @@ const Tile = ({ post }) => {
           }
           text={post.selftext_html}
           image={post.url}
+          thumbnail={post.thumbnail}
+          domain={post.domain}
+          thumbnailHeight={post.thumbnail_height}
         />
       )}
       <Bottom
         score={post.score}
         comments={post.num_comments}
         toggleShowComments={handleClickToggleShowComments}
+        permalink={post.permalink}
       />
     </article>
   );
