@@ -9,6 +9,8 @@ const SubredditBannerElement = ({ subreddit }) => {
   // Subreddit banner background
   const [banner, setBanner] = useState();
 
+  const [about, setAbout] = useState("");
+
   ////////////////////////////////////////////////////////////////////////////////
 
   // Fetching subreddit icon and banner
@@ -35,6 +37,8 @@ const SubredditBannerElement = ({ subreddit }) => {
         } else {
           setBanner(json.header_img);
         }
+
+        setAbout(json.public_description_html);
       } catch (error) {
         console.error(error);
       }
@@ -45,16 +49,22 @@ const SubredditBannerElement = ({ subreddit }) => {
   ////////////////////////////////////////////////////////////////////////////////
 
   return (
-    <div className="relative mb-2 flex h-48 w-full items-center overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-[14%] p-8 shadow-md md:mb-4 lg:mb-8">
+    <div className="group relative mb-2 flex h-48 w-full items-center overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-[14%] p-2 shadow-md md:mb-4 lg:mb-8">
       {/* Subreddit icon */}
-      <img
-        src={icon}
-        alt={`${subreddit} subreddit icon`}
-        className="aspect-square h-full rounded-full border-1 border-gray_border border-opacity-[14%] bg-white shadow-md"
-      />
+      {icon ? (
+        <img
+          src={icon}
+          alt={`${subreddit} subreddit icon`}
+          className="ml-4 aspect-square w-20 rounded-full border-1  border-gray_border border-opacity-[14%] bg-white shadow-md transition-all group-hover:opacity-50 group-hover:blur-sm lg:ml-6 lg:w-32"
+        />
+      ) : (
+        <div className="flex aspect-square h-full items-center justify-center overflow-hidden rounded-full border-1 border-gray_border border-opacity-[14%] bg-white font-medium shadow-md transition-all group-hover:blur-sm">
+          {subreddit}
+        </div>
+      )}
 
       {/* Subreddit name */}
-      <h1 className="ml-4 rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-50 p-2 px-4 text-2xl font-medium text-white shadow-md">
+      <h1 className="ml-4 w-max max-w-[80%] rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-50 p-2 px-4 text-lg font-medium text-white shadow-md transition-all group-hover:blur-sm lg:text-2xl">
         {subreddit.slice(2)}
       </h1>
 
@@ -63,7 +73,7 @@ const SubredditBannerElement = ({ subreddit }) => {
         <img
           src={banner}
           alt={`${subreddit} subreddit icon`}
-          className="absolute left-0 top-0 -z-10 h-full w-full rounded-[5px] object-cover blur-md brightness-90"
+          className="absolute left-0 top-0 -z-10 h-full w-full rounded-[5px] object-cover blur-md brightness-90 transition-all group-hover:blur-none"
         />
       ) : null}
     </div>

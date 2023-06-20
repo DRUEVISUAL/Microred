@@ -15,21 +15,17 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
-export const fetchPostsBeforeAfter = createAsyncThunk(
-  "feedSlice/fetchPostsBeforeAfter",
-  async ({ feed, before, after }, thunkAPI) => {
-    if (before) {
+export const fetchMorePosts = createAsyncThunk(
+  "feedSlice/fetchMorePosts",
+  async ({ feed, after }, thunkAPI) => {
+    try {
       const data = await fetch(
-        `https://www.reddit.com/r/all/${feed}.json?before=${before}`
+        `https://www.reddit.com/${feed}.json?after=${after}`
       );
       const response = await data.json();
       return response.data;
-    } else if (after) {
-      const data = await fetch(
-        `https://www.reddit.com/r/all/${feed}.json?after=${after}`
-      );
-      const response = await data.json();
-      return response.data;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
@@ -39,7 +35,6 @@ const feedSlice = createSlice({
   initialState: {
     posts: [],
     after: null,
-    before: null,
     isLoading: false,
     error: false,
   },
@@ -57,11 +52,27 @@ const feedSlice = createSlice({
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.posts = action.payload.children;
         state.after = action.payload.after;
-        state.before = action.payload.before;
         state.isLoading = false;
         state.error = false;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+
+      ////////////////////////////////////////////////////////////////////////////////
+
+      .addCase(fetchMorePosts.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(fetchMorePosts.fulfilled, (state, action) => {
+        state.posts = action.payload.children;
+        state.after = action.payload.after;
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(fetchMorePosts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = true;
       });
