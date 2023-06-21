@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useHref } from "react-router-dom";
 
+const style = {
+  wgroup:
+    "group relative mb-2 flex h-48 w-full items-center overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-[14%] p-2 shadow-md md:mb-4 lg:mb-8",
+  nogroup:
+    "relative mb-2 flex h-48 w-full items-center overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-[14%] p-2 shadow-md md:mb-4 lg:mb-8",
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 
 const SubredditBannerElement = ({ subreddit }) => {
@@ -50,7 +57,7 @@ const SubredditBannerElement = ({ subreddit }) => {
   ////////////////////////////////////////////////////////////////////////////////
 
   return (
-    <div className="group relative mb-2 flex h-48 w-full items-center overflow-hidden rounded-md border-1 border-gray_border border-opacity-[14%] bg-basecolor bg-opacity-[14%] p-2 shadow-md md:mb-4 lg:mb-8">
+    <div className={banner ? style.wgroup : style.nogroup}>
       {/* Subreddit icon */}
       {icon ? (
         <img
