@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { decode } from "html-entities";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
+import ReactPlayer from "react-player";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -20,23 +21,25 @@ const Content = ({ image, video, text, author, thumbnail, domain, thumbnailHeigh
 
   // Video element for the post
   const videoElement = (
-    <video controls className="mx-auto max-h-[32rem] rounded-md object-contain">
-      <source src={video} />
-    </video>
+    <ReactPlayer
+      controls
+      className={"max-h-[32rem] rounded-md object-contain"}
+      url={video}
+    />
   );
 
   const hypertextElement = (
-    <div className="flex items-center justify-start gap-4">
-      <img
-        src={thumbnail}
+    <a className="flex items-center justify-start gap-4" href={image}>
+        <img
+          src={thumbnail}
         alt=""
-        style={{ height: `${thumbnailHeight}px` }}
-        className="rounded-md"
-      />
-      <a href={image} className="h-8 w-8 text-xl font-medium hover:underline">
+          style={{ height: `${thumbnailHeight}px` }}
+          className="rounded-md"
+        />
+      <p className="h-8 w-8 text-xl font-medium hover:underline">
         {domain}
-      </a>
-    </div>
+      </p>
+    </a>
   );
 
   ////////////////////////////////////////////////////////////////////////////////

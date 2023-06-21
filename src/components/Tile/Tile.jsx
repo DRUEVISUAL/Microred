@@ -63,10 +63,10 @@ const Tile = ({ post }) => {
       ) : (
         <Content
           video={
-            post.media &&
-            post.media.reddit_video &&
-            post.media.reddit_video.fallback_url
-              ? post.media.reddit_video.fallback_url
+            post.secure_media &&
+            post.secure_media.reddit_video &&
+            post.secure_media.reddit_video.hls_url
+              ? post.secure_media.reddit_video.hls_url
               : ""
           }
           text={post.selftext_html}
