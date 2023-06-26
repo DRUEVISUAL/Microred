@@ -63,16 +63,16 @@ const SubredditBannerElement = ({ subreddit }) => {
         <img
           src={icon}
           alt={`${subreddit} subreddit icon`}
-          className="ml-4 aspect-square w-20 rounded-full border-1  border-gray_border border-opacity-[14%] bg-white shadow-md transition-all group-hover:opacity-50 group-hover:blur-sm lg:ml-6 lg:w-32"
+          className="ml-4 aspect-square w-20 rounded-full border-1  border-gray_border border-opacity-[14%] bg-white shadow-md transition-all duration-300 group-hover:opacity-50 group-hover:blur-sm lg:ml-6 lg:w-32"
         />
       ) : (
-        <div className="flex aspect-square h-full items-center justify-center overflow-hidden rounded-full border-1 border-gray_border border-opacity-[14%] bg-white font-medium shadow-md transition-all group-hover:blur-sm">
+        <div className="flex aspect-square h-full items-center justify-center overflow-hidden rounded-full border-1 border-gray_border border-opacity-[14%] bg-white font-medium shadow-md transition-all duration-300 group-hover:blur-sm">
           {subreddit}
         </div>
       )}
 
       {/* Subreddit name */}
-      <h1 className="ml-4 w-max max-w-[80%] rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-50 p-2 px-4 text-lg font-medium text-white shadow-md transition-all group-hover:blur-sm lg:text-2xl">
+      <h1 className="ml-4 w-max max-w-[80%] rounded-md border-1 border-gray_border border-opacity-[14%] bg-black bg-opacity-50 p-2 px-4 text-lg font-medium text-white shadow-md transition-all duration-300 group-hover:blur-sm lg:text-2xl">
         {subreddit.slice(2)}
       </h1>
 
@@ -81,7 +81,7 @@ const SubredditBannerElement = ({ subreddit }) => {
         <img
           src={banner}
           alt={`${subreddit} subreddit icon`}
-          className="absolute left-0 top-0 -z-10 h-full w-full rounded-[5px] object-cover blur-md brightness-90 transition-all group-hover:blur-none"
+          className="absolute left-0 top-0 -z-10 h-full w-full rounded-[5px] object-cover blur-md brightness-90 transition-all duration-300 group-hover:blur-none"
         />
       ) : null}
     </div>
