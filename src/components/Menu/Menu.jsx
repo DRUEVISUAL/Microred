@@ -23,7 +23,7 @@ const Menu = () => {
   return (
     <div className="h-full overflow-y-scroll pb-2">
       {/* Search bar, small device visible, medium and large device hidden */}
-      <div className="mb-2 mt-2 h-10 md:hidden">
+      <div className="mb-2 mt-2 h-10 lg:hidden">
         <Search />
       </div>
       {/* Search popup */}

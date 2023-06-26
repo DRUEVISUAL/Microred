@@ -23,22 +23,20 @@ const Content = ({ image, video, text, author, thumbnail, domain, thumbnailHeigh
   const videoElement = (
     <ReactPlayer
       controls
-      className={"max-h-[32rem] rounded-md object-contain"}
+      className={"mx-auto max-h-[32rem] max-w-fit rounded-md object-contain"}
       url={video}
     />
   );
 
   const hypertextElement = (
     <a className="flex items-center justify-start gap-4" href={image}>
-        <img
-          src={thumbnail}
+      <img
+        src={thumbnail}
         alt=""
-          style={{ height: `${thumbnailHeight}px` }}
-          className="rounded-md"
-        />
-      <p className="h-8 w-8 text-xl font-medium hover:underline">
-        {domain}
-      </p>
+        style={{ height: `${thumbnailHeight}px` }}
+        className="rounded-md"
+      />
+      <p className="h-8 w-8 text-xl font-medium hover:underline">{domain}</p>
     </a>
   );
 

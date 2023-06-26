@@ -25,6 +25,7 @@ const MenuButton = () => {
       className={menuState ? style.closeMenu : style.openMenu}
       onClick={() => dispatch(menuToggle())}
       data-cy="menuButtonPhone"
+      aria-label="menu button"
     ></button>
   );
 };

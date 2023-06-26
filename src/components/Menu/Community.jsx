@@ -39,6 +39,7 @@ const Community = ({ isMenuElement, subreddit, icon }) => {
         {icon ? (
           <img
             src={icon}
+            alt={`${subreddit} community icon`}
             className="ml-2 aspect-square h-6 rounded-full object-contain"
           />
         ) : (

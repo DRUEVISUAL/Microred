@@ -1,13 +1,15 @@
 import React from "react";
-import Nav from "../components/Nav/Nav";
+import NavPhone from "../components/Nav/NavPhone";
+import NavDesktop from "../components/Nav/NavDesktop";
 import { Outlet } from "react-router-dom";
 
 ////////////////////////////////////////////////////////////////////////////////
 
 const rootLayout = () => {
   return (
-    <div className="h-screen w-screen">
-      <Nav />
+    <div className="h-[100vh] w-screen">
+      <NavPhone />
+      <NavDesktop />
       <Outlet />
     </div>
   );

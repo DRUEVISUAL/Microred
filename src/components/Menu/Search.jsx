@@ -56,6 +56,7 @@ const Search = () => {
           searchResults.length === 0 ? style.removeFalse : style.removeTrue
         }
         onClick={() => (dispatch(removeResults()), setSearchField(""))}
+        aria-label="Clear search field"
       ></button>
     </div>
   );

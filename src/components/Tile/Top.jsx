@@ -48,7 +48,7 @@ const Top = ({ title, author, subreddit, created, icon, permalink }) => {
       {/* Community, author and post time */}
       <div className="flex items-center justify-between py-1 text-[10px] lg:text-xs">
         <Community isMenuElement={false} subreddit={subreddit} icon={icon} />
-        <div className="flex min-w-max items-center gap-2 pr-2 text-text_color opacity-60">
+        <div className="flex min-w-max text-ellipsis items-center gap-2 pr-2 text-text_color opacity-60">
           <p>
             Posted by:{" "}
             <Link
