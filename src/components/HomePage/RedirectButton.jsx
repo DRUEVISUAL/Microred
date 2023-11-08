@@ -10,10 +10,8 @@ const RedirectButton = ({ icon, alt }) => {
           ? "/top"
           : icon === "code"
           ? "https://github.com/DRUEVISUAL/Microred"
-          : "/"
-      }
-      onClick={icon === "feedback" ? () => alert("Feature in progress") : null}
-    >
+          : "https://www.druevisual.net"
+      }>
       <img
         src={`/assets/${icon}.gif`}
         alt={alt}
