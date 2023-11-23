@@ -1,5 +1,6 @@
 # Microred
 
-## URL
+Codecademy portfolio project, browse reddit in a new form.
 
-http://remarkable-cascaron-aee5f6.netlify.app
+## URL
+https://microred.netlify.app
